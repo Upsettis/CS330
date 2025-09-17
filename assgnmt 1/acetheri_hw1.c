@@ -14,10 +14,10 @@ int sumOfDigits(int n){
     return total;
 }
 
-int UABMaxMinDiff(char* input){
-    int max = -10;
-    int min = 10;
-    for(int i = 0; i < strlen(input); i++){
+int UABMaxMinDiff(int input[], int size){
+    int max = input[0];
+    int min = input[0];
+    for(int i = 0; i < size; i++){
         int temp = input[i];
         if( max < temp) max = temp;
         if( min > temp) min = temp;
@@ -26,9 +26,11 @@ int UABMaxMinDiff(char* input){
 
 }
 
-char* replaceEvenWithZero(char* arr){
-    for(int i = 0; i < strlen(arr); i++){
-        if(arr[i] % 2 == 0) arr[i] = '0';
+int replaceEvenWithZero(int arr[], int size){
+    for(int i = 0; i < size; i++){
+        if(arr[i] % 2 == 0){
+            arr[i] = 0;
+        }
     }
     return arr;
 }
@@ -57,3 +59,56 @@ int countVowels(char* s) {
     return total;
 }
 
+int main() {
+    
+    printf("%d\n", sumOfDigits(123));
+    printf("%d\n", sumOfDigits(405));
+    printf("%d\n", sumOfDigits(0));
+    printf("%d\n", sumOfDigits(7));
+    printf("%d\n", sumOfDigits(-308));
+    printf("\n");
+
+    int arr1[] = {3,7,2,9};
+    printf("%d\n", UABMaxMinDiff(arr1,4));
+    int arr2[] = {5,5,5,5,5,5};
+    printf("%d\n", UABMaxMinDiff(arr2,6));
+    int arr3[] = {-2,4,-1,6,5};
+    printf("%d\n", UABMaxMinDiff(arr3,5)); // Using letters to demonstrate ASCII logic
+    printf("\n");
+
+
+    int arr4[] = {1,2,3,4};
+    replaceEvenWithZero(arr4,4);
+    for(int i = 0; i < 4; i++){
+    printf("%d", arr4[i]);
+    }
+    printf("\n");
+    int arr5[] = {2,4,6};
+    replaceEvenWithZero(arr5,3);
+    for(int i = 0; i < 3; i++){
+    printf("%d", arr5[i]);
+    }
+    printf("\n");
+    int arr6[] = {1,3,5};
+    replaceEvenWithZero(arr6,3);
+    for(int i = 0; i < 3; i++){
+    printf("%d", arr6[i]);
+    }
+    printf("\n");
+    printf("\n");
+
+
+    printf("%s\n", perfectSquare(16));
+    printf("%s\n", perfectSquare(15));
+    printf("%s\n", perfectSquare(25));
+    printf("%s\n", perfectSquare(36));
+    printf("\n");
+
+    
+    printf("%d\n", countVowels("Hello World"));
+    printf("%d\n", countVowels("UAB CS"));
+    printf("%d\n", countVowels("Python"));
+    printf("%d\n", countVowels("aeiou"));
+
+    return 0;
+}
